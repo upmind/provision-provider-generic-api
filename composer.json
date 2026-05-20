@@ -13,14 +13,14 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Upmind\\ProvisionProviders\\Generic\\LaravelServiceProvider"
+                "Upmind\\ProvisionProviders\\GenericApi\\LaravelServiceProvider"
             ]
         }
     },
     "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
-            "Upmind\\ProvisionProviders\\Generic\\": "src/"
+            "Upmind\\ProvisionProviders\\GenericApi\\": "src/"
         }
     },
     "authors": [

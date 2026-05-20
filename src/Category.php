@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Upmind\ProvisionProviders\Generic;
+namespace Upmind\ProvisionProviders\GenericApi;
 
 use Upmind\ProvisionBase\Provider\BaseCategory;
 use Upmind\ProvisionBase\Provider\DataSet\AboutData;
-use Upmind\ProvisionProviders\Generic\Data\ChangePackageParams;
-use Upmind\ProvisionProviders\Generic\Data\CreateParams;
-use Upmind\ProvisionProviders\Generic\Data\CustomFunctionParams;
-use Upmind\ProvisionProviders\Generic\Data\EmptyResult;
-use Upmind\ProvisionProviders\Generic\Data\ServiceIdentifierParams;
-use Upmind\ProvisionProviders\Generic\Data\ServiceInfo;
+use Upmind\ProvisionProviders\GenericApi\Data\ChangePackageParams;
+use Upmind\ProvisionProviders\GenericApi\Data\CreateParams;
+use Upmind\ProvisionProviders\GenericApi\Data\CustomFunctionParams;
+use Upmind\ProvisionProviders\GenericApi\Data\EmptyResult;
+use Upmind\ProvisionProviders\GenericApi\Data\ServiceIdentifierParams;
+use Upmind\ProvisionProviders\GenericApi\Data\ServiceInfo;
 
 /**
  * This provision category contains common functions which should cover the lifecycle of the majority of provisionable

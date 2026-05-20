@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Upmind\ProvisionProviders\Generic\Tests\Unit\RPC;
+namespace Upmind\ProvisionProviders\GenericApi\Tests\Unit\RPC;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
@@ -18,10 +18,10 @@ use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 use ReflectionProperty;
 use Upmind\ProvisionBase\Exception\ProvisionFunctionError;
-use Upmind\ProvisionProviders\Generic\Data\CreateParams;
-use Upmind\ProvisionProviders\Generic\Data\ServiceInfo;
-use Upmind\ProvisionProviders\Generic\Providers\RPC\Configuration;
-use Upmind\ProvisionProviders\Generic\Providers\RPC\Provider;
+use Upmind\ProvisionProviders\GenericApi\Data\CreateParams;
+use Upmind\ProvisionProviders\GenericApi\Data\ServiceInfo;
+use Upmind\ProvisionProviders\GenericApi\Providers\RPC\Configuration;
+use Upmind\ProvisionProviders\GenericApi\Providers\RPC\Provider;
 
 class ProviderTest extends TestCase
 {
