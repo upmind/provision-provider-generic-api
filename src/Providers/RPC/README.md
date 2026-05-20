@@ -6,6 +6,8 @@ This provider allows configuration of a base API URL and Authorization header fo
 
 API requests are made via HTTP POST to your configured base URL with JSON body. The function name is appended to the base URL, so for example if your base URL is `https://api.example.com/rpc` and you execute the `create` function, the provider will make a POST request to `https://api.example.com/rpc/create` with the an Authorization header value as configured.
 
+The POST body will be a JSON object in the shape of the function params e.g., [CreateParams](/src/Data/CreateParams.php) for the create() function.
+
 When executing customFunction(), the `function` will be used as the RPC action, so for example if you execute `customFunction` with `function` parameter value of `doSomethingSpecial`, the provider will make a POST request to `https://api.example.com/rpc/doSomethingSpecial`.
 
 ## API Responses
