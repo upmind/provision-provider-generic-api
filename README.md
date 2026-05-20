@@ -1,6 +1,6 @@
-# [Upmind Provision Providers](https://github.com/upmind-automation) - Generic
+# [Upmind Provision Providers](https://github.com/upmind-automation) - Generic API
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/upmind/provision-provider-generic.svg?style=flat-square)](https://packagist.org/packages/upmind/provision-provider-generic)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/upmind/provision-provider-generic-api.svg?style=flat-square)](https://packagist.org/packages/upmind/provision-provider-generic-api)
 
 This provision category contains common functions which should cover the lifecycle of the majority of provisionable online services. Ships with a custom function definition which can be used for additional flexibility.
 
@@ -19,7 +19,7 @@ This provision category contains common functions which should cover the lifecyc
 ## Installation
 
 ```bash
-composer require upmind/provision-provider-generic
+composer require upmind/provision-provider-generic-api
 ```
 
 ## Usage
