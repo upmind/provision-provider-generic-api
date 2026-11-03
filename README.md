@@ -4,6 +4,7 @@
 
 This provision category contains common functions which should cover the lifecycle of the majority of provisionable online services. Ships with a custom function definition which can be used for additional flexibility.
 
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Quick-start](#quick-start)
@@ -15,6 +16,11 @@ This provision category contains common functions which should cover the lifecyc
 - [Credits](#credits)
 - [License](#license)
 - [Upmind](#upmind)
+
+## Requirements
+
+- PHP 8.3, 8.4 or 8.5
+- [upmind/provision-provider-base](https://packagist.org/packages/upmind/provision-provider-base) v5
 
 ## Installation
 
