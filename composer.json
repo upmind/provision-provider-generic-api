@@ -3,11 +3,12 @@
     "description": "This provision category contains common functions which should cover the lifecycle of the majority of provisionable online services. Ships with a custom function definition which can be used for additional flexibility.",
     "type": "library",
     "require": {
-        "upmind/provision-provider-base": "^3.7 || ^4.0"
+        "php": "^8.3",
+        "upmind/provision-provider-base": "dev-feature/base-v5-support as 5.0.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^9.6 || ^10.5 || ^11.0 || ^12.0",
+        "phpunit/phpunit": "^12.0 || ^13.0",
         "psy/psysh": "^0.12.22"
     },
     "extra": {

@@ -1,54 +1,65 @@
 COMPOSE ?= docker compose
-PHP_VERSION ?= 8.1
+PHP_VERSION ?= 8.3
 PHP_VERSION_ORIGIN := $(origin PHP_VERSION)
 SERVICE := php$(subst .,,$(PHP_VERSION))
 
-.PHONY: help build build74 build81 up up74 up81 stop stop74 stop81 down restart ps logs shell bash php
+.PHONY: help build build83 build84 build85 up up83 up84 up85 stop stop83 stop84 stop85 down restart ps logs shell bash php
 
 help:
 	@echo "Usage:"
-	@echo "  make up PHP_VERSION=7.4|8.1    Start selected PHP container"
-	@echo "  make up74                      Start PHP 7.4 container"
-	@echo "  make up81                      Start PHP 8.1 container"
-	@echo "  make stop PHP_VERSION=7.4|8.1  Stop selected PHP container"
-	@echo "  make down                      Stop and remove all containers"
-	@echo "  make shell                     Open shell in the only running PHP container"
-	@echo "  make shell PHP_VERSION=7.4|8.1 Open shell in selected PHP container"
-	@echo "  make logs PHP_VERSION=7.4|8.1  Follow logs of selected container"
-	@echo "  make build PHP_VERSION=7.4|8.1  Build selected PHP image"
-	@echo "  make build74                   Build PHP 7.4 image"
-	@echo "  make build81                   Build PHP 8.1 image"
-	@echo "  make ps                        Show running containers"
+	@echo "  make up PHP_VERSION=8.3|8.4|8.5    Start selected PHP container"
+	@echo "  make up83                          Start PHP 8.3 container"
+	@echo "  make up84                          Start PHP 8.4 container"
+	@echo "  make up85                          Start PHP 8.5 container"
+	@echo "  make stop PHP_VERSION=8.3|8.4|8.5  Stop selected PHP container"
+	@echo "  make down                          Stop and remove all containers"
+	@echo "  make shell                         Open shell in the only running PHP container"
+	@echo "  make shell PHP_VERSION=8.3|8.4|8.5 Open shell in selected PHP container"
+	@echo "  make logs PHP_VERSION=8.3|8.4|8.5  Follow logs of selected container"
+	@echo "  make build PHP_VERSION=8.3|8.4|8.5 Build selected PHP image"
+	@echo "  make build83                       Build PHP 8.3 image"
+	@echo "  make build84                       Build PHP 8.4 image"
+	@echo "  make build85                       Build PHP 8.5 image"
+	@echo "  make ps                            Show running containers"
 
 build:
 	@$(MAKE) validate-version
 	$(COMPOSE) build $(SERVICE)
 
-build74:
-	@$(MAKE) build PHP_VERSION=7.4
+build83:
+	@$(MAKE) build PHP_VERSION=8.3
 
-build81:
-	@$(MAKE) build PHP_VERSION=8.1
+build84:
+	@$(MAKE) build PHP_VERSION=8.4
+
+build85:
+	@$(MAKE) build PHP_VERSION=8.5
 
 up:
 	@$(MAKE) validate-version
 	$(COMPOSE) up -d $(SERVICE)
 
-up74:
-	@$(MAKE) up PHP_VERSION=7.4
+up83:
+	@$(MAKE) up PHP_VERSION=8.3
 
-up81:
-	@$(MAKE) up PHP_VERSION=8.1
+up84:
+	@$(MAKE) up PHP_VERSION=8.4
+
+up85:
+	@$(MAKE) up PHP_VERSION=8.5
 
 stop:
 	@$(MAKE) validate-version
 	$(COMPOSE) stop $(SERVICE)
 
-stop74:
-	@$(MAKE) stop PHP_VERSION=7.4
+stop83:
+	@$(MAKE) stop PHP_VERSION=8.3
 
-stop81:
-	@$(MAKE) stop PHP_VERSION=8.1
+stop84:
+	@$(MAKE) stop PHP_VERSION=8.4
+
+stop85:
+	@$(MAKE) stop PHP_VERSION=8.5
 
 down:
 	$(COMPOSE) down
@@ -65,7 +76,7 @@ logs:
 	$(COMPOSE) logs -f $(SERVICE)
 
 shell:
-	@running_services="$$($(COMPOSE) ps --services --status running | grep -E '^php(74|81)$$' || true)"; \
+	@running_services="$$($(COMPOSE) ps --services --status running | grep -E '^php(83|84|85)$$' || true)"; \
 	if [ "$(PHP_VERSION_ORIGIN)" = "command line" ] || [ "$(PHP_VERSION_ORIGIN)" = "environment" ]; then \
 		$(MAKE) -s validate-version; \
 		target_service="$(SERVICE)"; \
@@ -74,10 +85,10 @@ shell:
 		if [ "$$running_count" = "1" ]; then \
 			target_service="$$running_services"; \
 		elif [ "$$running_count" = "0" ]; then \
-			echo "Error: no PHP container is running. Start one with 'make up74' or 'make up81'."; \
+			echo "Error: no PHP container is running. Start one with 'make up83', 'make up84' or 'make up85'."; \
 			exit 1; \
 		else \
-			echo "Error: multiple PHP containers are running. Use 'make shell PHP_VERSION=7.4' or 'make shell PHP_VERSION=8.1'."; \
+			echo "Error: multiple PHP containers are running. Use 'make shell PHP_VERSION=8.3', 'make shell PHP_VERSION=8.4' or 'make shell PHP_VERSION=8.5'."; \
 			exit 1; \
 		fi; \
 	fi; \
@@ -90,7 +101,7 @@ php:
 	$(COMPOSE) exec $(SERVICE) php -v
 
 validate-version:
-	@if [ "$(PHP_VERSION)" != "7.4" ] && [ "$(PHP_VERSION)" != "8.1" ]; then \
-		echo "Error: PHP_VERSION must be 7.4 or 8.1 (got '$(PHP_VERSION)')"; \
+	@if [ "$(PHP_VERSION)" != "8.3" ] && [ "$(PHP_VERSION)" != "8.4" ] && [ "$(PHP_VERSION)" != "8.5" ]; then \
+		echo "Error: PHP_VERSION must be 8.3, 8.4 or 8.5 (got '$(PHP_VERSION)')"; \
 		exit 1; \
 	fi

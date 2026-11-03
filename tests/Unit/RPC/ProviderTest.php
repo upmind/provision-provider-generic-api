@@ -6,7 +6,7 @@ namespace Upmind\ProvisionProviders\GenericApi\Tests\Unit\RPC;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Container\Container;
@@ -176,7 +176,7 @@ class ProviderTest extends TestCase
             'data' => [],
         ], JSON_THROW_ON_ERROR));
 
-        $exception = new RequestException('Server error', $request, $response);
+        $exception = new ServerException('Server error', $request, $response);
 
         try {
             $provider->handleTransferException($exception);

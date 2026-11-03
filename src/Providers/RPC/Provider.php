@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Upmind\ProvisionProviders\GenericApi\Providers\RPC;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ResponseException;
 use GuzzleHttp\Exception\TransferException;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
@@ -317,7 +317,8 @@ class Provider extends Category implements ProviderInterface
      */
     public function handleTransferException(TransferException $e): void
     {
-        if ($e instanceof RequestException && $response = $e->getResponse()) {
+        if ($e instanceof ResponseException) {
+            $response = $e->getResponse();
             $data = $this->parseResponse($response);
 
             $this->errorResult('Provider API response error', [

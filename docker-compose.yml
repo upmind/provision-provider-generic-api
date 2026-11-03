@@ -1,9 +1,9 @@
 services:
-  php74:
+  php83:
     build:
       context: .
       args:
-        PHP_VERSION: "7.4"
+        PHP_VERSION: "8.3"
     working_dir: /workspace
     volumes:
       - ./:/workspace
@@ -11,11 +11,23 @@ services:
     tty: true
     stdin_open: true
 
-  php81:
+  php84:
     build:
       context: .
       args:
-        PHP_VERSION: "8.1"
+        PHP_VERSION: "8.4"
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    command: ["bash", "-lc", "while true; do sleep 1000; done"]
+    tty: true
+    stdin_open: true
+
+  php85:
+    build:
+      context: .
+      args:
+        PHP_VERSION: "8.5"
     working_dir: /workspace
     volumes:
       - ./:/workspace
